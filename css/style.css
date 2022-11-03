@@ -1,0 +1,43 @@
+/* RESET */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* STRUTTURA */
+body{
+    height: 100vh;
+}
+main{
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+}
+/* DOC STYLE */
+.board{
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
+.box{
+    width: calc(100%/10);
+    height: calc(100%/10);
+    text-align: center;
+    padding: 15px;
+    border: 1px solid black;
+}
+.box_normal{
+    width: calc(100%/9);
+    height: calc(100%/9);
+    text-align: center;
+    border: 1px solid black;
+}
+.box_hard{
+    width: calc(100%/7);
+    height: calc(100%/7);
+    text-align: center;
+    border: 1px solid black;
+}
+
