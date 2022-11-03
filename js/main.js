@@ -27,7 +27,6 @@ function createAndClickBox(cellnumber){
             box.classList.replace("box","box_hard");
         }
         box.addEventListener("click", function(){
-            document.querySelector("#wlText").innerHTML=`Il tuo punteggio è <br>${score}`
             console.log(Arraybomb)
             if (Arraybomb.includes(i)) {
                 box.style.backgroundColor="red"
@@ -37,6 +36,7 @@ function createAndClickBox(cellnumber){
                 box.classList.add("unclickable")
                 box.style.backgroundColor="lightblue"
                 console.log(i)
+                document.querySelector("#wlText").innerHTML=`Il tuo punteggio è <br>${score}`
             }
         })
     }
