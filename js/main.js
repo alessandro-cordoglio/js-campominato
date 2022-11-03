@@ -15,6 +15,7 @@ let Arraybomb=[]
 /* FUNCTIONS */
 //funzione x creazione dei box
 function createAndClickBox(cellnumber){
+    let score= 0
     for (let i = 1; i <= cellnumber; i++) {
         const box= document.createElement("div")
         box.innerHTML= i
@@ -26,10 +27,12 @@ function createAndClickBox(cellnumber){
             box.classList.replace("box","box_hard");
         }
         box.addEventListener("click", function(){
+            score ++
+            document.querySelector("#wlText").innerHTML=`Il tuo punteggio è ${score}`
             console.log(Arraybomb)
             if (Arraybomb.includes(i)) {
                 box.style.backgroundColor="red"
-                alert("hai perso")
+                document.querySelector("#wlText").innerHTML=`HAI PERSO! Il tuo punteggio è ${score}`
             }else{
                 box.style.backgroundColor="lightblue"
                 console.log(i)
@@ -37,6 +40,7 @@ function createAndClickBox(cellnumber){
         })
     }
 }
+
 //funzione creazione bombe
 function randomBombGenerator(cellnumber) {
     let i = 0;
