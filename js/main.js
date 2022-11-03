@@ -26,16 +26,22 @@ function createAndClickBox(cellnumber){
             box.classList.replace("box","box_hard");
         }
         box.addEventListener("click", function(){
-            box.style.backgroundColor="lightblue"
-            alert(i)
+            console.log(Arraybomb)
+            if (Arraybomb.includes(i)) {
+                box.style.backgroundColor="red"
+                alert("hai perso")
+            }else{
+                box.style.backgroundColor="lightblue"
+                console.log(i)
+            }
         })
     }
 }
 //funzione creazione bombe
-function randomBombGenerator() {
+function randomBombGenerator(cellnumber) {
     let i = 0;
     while(Arraybomb.length<16){
-       const random = (Math.floor(Math.random() * 16 )+1);   
+       const random = (Math.floor(Math.random() * cellnumber )+1);   
         if (Arraybomb.includes(random)) {
             Arraybomb.splice(random)
         }else{
@@ -52,11 +58,13 @@ start.addEventListener("click", function(){
     //controllo della difficoltà
     if (difficultyChoice==="hard") {
         createAndClickBox(49)
+        randomBombGenerator(49)
     }else if(difficultyChoice==="normal"){
         createAndClickBox(81)
+        randomBombGenerator(81)
     }else if(difficultyChoice==="easy"){
         createAndClickBox(100)
+        randomBombGenerator(100)
     }
-   
 });  
 
