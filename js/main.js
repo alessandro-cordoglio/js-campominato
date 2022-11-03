@@ -27,13 +27,14 @@ function createAndClickBox(cellnumber){
             box.classList.replace("box","box_hard");
         }
         box.addEventListener("click", function(){
-            score ++
-            document.querySelector("#wlText").innerHTML=`Il tuo punteggio è ${score}`
+            document.querySelector("#wlText").innerHTML=`Il tuo punteggio è <br>${score}`
             console.log(Arraybomb)
             if (Arraybomb.includes(i)) {
                 box.style.backgroundColor="red"
-                document.querySelector("#wlText").innerHTML=`HAI PERSO! Il tuo punteggio è ${score}`
+                document.querySelector("#wlText").innerHTML=`HAI PERSO!<br> Il tuo punteggio è ${score}`
             }else{
+                score ++
+                box.classList.add("unclickable")
                 box.style.backgroundColor="lightblue"
                 console.log(i)
             }
