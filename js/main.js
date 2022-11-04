@@ -47,7 +47,7 @@ function createAndClickBox(cellnumber){
                 document.querySelector("#wlText").innerHTML=`Il tuo punteggio è <br>${score}`
             }
 
-            if (numbersClicked.length=== (totCell-1)) {
+            if (numbersClicked.length=== (totCell-16)) {
                 gameOver=true
                 document.querySelector("#wlText").innerHTML=`HAI VINTO!<br>Il tuo punteggio è <br>${score}`
             }
@@ -57,7 +57,7 @@ function createAndClickBox(cellnumber){
 
 //funzione creazione bombe
 function randomBombGenerator(cellnumber) {
-    while(Arraybomb.length<1){
+    while(Arraybomb.length<16){
        const random = (Math.floor(Math.random() * cellnumber )+1);   
         if (Arraybomb.includes(random)) {
             Arraybomb.splice(random)
