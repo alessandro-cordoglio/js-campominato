@@ -12,9 +12,12 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 const board= document.querySelector("#board")
 const start= document.getElementById("start")
 let Arraybomb=[]
+const numbersClicked=[]
+let gameOver= false
 /* FUNCTIONS */
 //funzione x creazione dei box
 function createAndClickBox(cellnumber){
+    const totCell=cellnumber
     let score= 0
     for (let i = 1; i <= cellnumber; i++) {
         const box= document.createElement("div")
@@ -26,17 +29,27 @@ function createAndClickBox(cellnumber){
         }else if (cellnumber===49) {
             box.classList.replace("box","box_hard");
         }
-        box.addEventListener("click", function(){
+        box.addEventListener("click", function(event){
             console.log(Arraybomb)
+            if (gameOver) {
+                return;
+            }
             if (Arraybomb.includes(i)) {
                 box.style.backgroundColor="red"
                 document.querySelector("#wlText").innerHTML=`HAI PERSO!<br> Il tuo punteggio è ${score}`
-            }else{
+                gameOver=true
+            }else if(numbersClicked.includes(i)===false){
                 score ++
+                numbersClicked.push(cellnumber)
                 box.classList.add("unclickable")
                 box.style.backgroundColor="lightblue"
                 console.log(i)
                 document.querySelector("#wlText").innerHTML=`Il tuo punteggio è <br>${score}`
+            }
+
+            if (numbersClicked.length=== (totCell-1)) {
+                gameOver=true
+                document.querySelector("#wlText").innerHTML=`HAI VINTO!<br>Il tuo punteggio è <br>${score}`
             }
         })
     }
@@ -44,14 +57,12 @@ function createAndClickBox(cellnumber){
 
 //funzione creazione bombe
 function randomBombGenerator(cellnumber) {
-    let i = 0;
-    while(Arraybomb.length<16){
+    while(Arraybomb.length<1){
        const random = (Math.floor(Math.random() * cellnumber )+1);   
         if (Arraybomb.includes(random)) {
             Arraybomb.splice(random)
         }else{
             Arraybomb.push(random);
-            i++
         } 
       }
 }
